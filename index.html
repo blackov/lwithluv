@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Камила против бородачей</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Sans MS';
+      background: #0f0c29;
+      background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Анимированные фоны */
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .circle:nth-child(1) {
+      width: 200px; height: 200px;
+      background: #ff6ec4;
+      top: 10%; left: 20%;
+      animation-delay: 0s;
+    }
+
+    .circle:nth-child(2) {
+      width: 300px; height: 300px;
+      background: #7873f5;
+      top: 50%; left: 70%;
+      animation-delay: 5s;
+    }
+
+    .circle:nth-child(3) {
+      width: 150px; height: 150px;
+      background: #42e695;
+      top: 80%; left: 10%;
+      animation-delay: 10s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.1; }
+      50% { transform: translateY(-50px) scale(1.1); opacity: 0.2; }
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(to right, #00000099, #00000033);
+      animation: fadeIn 1.5s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-shadow: 3px 3px #000;
+      animation: popIn 1s ease-in-out forwards;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      animation: fadeIn 2s ease-in-out 0.5s forwards;
+      opacity: 0;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .gang {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .member {
+      background: #fff;
+      color: #000;
+      border-radius: 20px;
+      padding: 20px;
+      width: 220px;
+      text-align: center;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slideUp 1s forwards;
+    }
+    .member:hover {
+       transform: scale(1.1);
+    }
+    .member:nth-child(1) { animation-delay: 0.3s; }
+    .member:nth-child(2) { animation-delay: 0.6s; }
+    .member:nth-child(3) { animation-delay: 0.9s; }
+    .member:nth-child(4) { animation-delay: 1.2s; }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .story {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: center;
+      font-size: 1.4rem;
+      line-height: 1.6;
+      background: rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .instagram {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .instagram h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .insta-screenshot {
+      width: 320px;
+      max-width: 90vw;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.03);
+      }
+    }
+
+    .fight {
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fight button {
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .fight button:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 1rem;
+      background: rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-animation">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <header>
+    <h1>Камила Курмантаева</h1>
+    <p>и все остальные</p>
+  </header>
+
+  <section class="gang">
+    <div class="member">
+      <h3>Камила</h3>
+      <p>Громкая, но безопасная</p>
+    </div>
+    <div class="member">
+      <h3>Ангелина</h3>
+      <p>Громкая и у нее парень чеченец</p>
+    </div>
+  </section>
+
+  <section class="story">
+    <p>
+      С ранних лет Камила перестала следить за базаром. В осознанном возрасте она поняла, что недолюбливает бородатых, бровастых и носатых.
+      Время от времени, когда она выпьет 2 гаража у нее появляются суперспособности
+    </p>
+  </section>
+
+  <section class="instagram">
+    <h2>Инстаграм Камилы</h2>
+    <img src="insta.jpg" alt="Instagram Screenshot" class="insta-screenshot">
+  </section>
+
+  <section class="fight">
+    <h2>Суперсила Камилы</h2>
+    <button onclick="startBattle()">Использовать</button>
+    <p id="battleResult" style="margin-top:20px; font-size:1.3rem;"></p>
+  </section>
+
+
+  <script>
+    const results = [
+      'Скинуть рилс про хачей',
+      'Пнуть',
+      'Переименовать в инстаграме',
+      'Заблокировать',
+      'Перестать общаться',
+      'Поняяятноо',
+      'Ну а так классная девочка аче',
+      'Закурить гло',
+    ];
+
+    function startBattle() {
+      const result = results[Math.floor(Math.random() * results.length)];
+      document.getElementById('battleResult').textContent = result;
+    }
+  </script>
+
+<section class="story">
+  <h2>Оставить жалобу</h2>
+  <form onsubmit="event.preventDefault(); alert('Жалоба не принята епта терпила');" style="max-width:400px; margin: 0 auto;">
+    <input type="text" placeholder="Ваше имя" required style="padding:10px; width:100%; margin-bottom:10px;">
+    <textarea placeholder="Что вам сделала Камила?" required style="padding:10px; width:100%; height:100px;"></textarea>
+    <button type="submit" style="margin-top:10px; padding:10px 20px;">Отправить жалобу</button>
+  </form>
+</section>
+
+
+<div id="hackMessage" style="
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  color:#0f0;
+  font-family: monospace;
+  font-size: 1.2rem;
+  padding:20px;
+  z-index:99999;
+  line-height: 1.6;
+">
+  <p>⚠️ Обнаружено подозрительное устройство...🤯🤯🤯</p>
+  <p>👀 Обнаружена Камила...</p>
+  <p>💣 Воняет стиками от гло...</p>
+</div>
+
+<script>
+setTimeout(() => {
+  const hack = document.getElementById('hackMessage');
+  hack.style.display = 'block';
+  document.body.style.filter = 'contrast(1.5) hue-rotate(180deg)';
+  document.body.style.transition = 'filter 0.3s';
+
+  // "Мерцание" экрана
+  let flicker = setInterval(() => {
+    document.body.style.filter =
+      Math.random() > 0.5
+        ? 'contrast(0.6) hue-rotate(90deg)'
+        : 'contrast(1.5) hue-rotate(180deg)';
+  }, 100);
+
+  // Финальный текст и сброс
+  setTimeout(() => {
+    hack.innerHTML += '<p>✅ Ладно наебал 🫠🫠🫠</p>';
+    clearInterval(flicker);
+    document.body.style.filter = 'none';
+
+    setTimeout(() => {
+      hack.style.display = 'none';
+    }, 3000);
+  }, 3000);
+}, 5000);
+</script>
+
+</body>
+</html>
